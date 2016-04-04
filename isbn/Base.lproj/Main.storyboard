@@ -13,57 +13,54 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-Ye-1iv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ISBN" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="MLh-Ye-1iv">
                                 <rect key="frame" x="215" y="90" width="171" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="S2a-Vt-ky3"/>
-                                    <constraint firstAttribute="height" constant="30" id="nY7-B2-xjh"/>
+                                    <constraint firstAttribute="height" constant="30" id="756-PY-DbN"/>
+                                    <constraint firstAttribute="width" constant="171" id="TpC-yo-6Z5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <action selector="textFieldDoneEditing:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="9gF-qt-Ehn"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVO-6r-znJ">
                                 <rect key="frame" x="281" y="45" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTz-xy-kuu">
-                                <rect key="frame" x="282" y="134" width="36" height="30"/>
-                                <state key="normal" title="Clear"/>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5uW-46-NES">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Respuesta de la petición" translatesAutoresizingMaskIntoConstraints="NO" id="5uW-46-NES">
                                 <rect key="frame" x="0.0" y="191" width="600" height="389"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd8-Ac-fOM">
-                                <rect key="frame" x="407" y="89" width="48" height="30"/>
-                                <state key="normal" title="Search"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wd8-Ac-fOM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="69" id="9VG-H0-0oe"/>
-                            <constraint firstItem="5uW-46-NES" firstAttribute="top" secondItem="OTz-xy-kuu" secondAttribute="bottom" constant="27" id="HNg-YN-qwa"/>
-                            <constraint firstItem="5uW-46-NES" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Sk2-yc-WIr"/>
-                            <constraint firstItem="Wd8-Ac-fOM" firstAttribute="leading" secondItem="MLh-Ye-1iv" secondAttribute="trailing" constant="21" id="TnI-O5-gyw"/>
-                            <constraint firstItem="OTz-xy-kuu" firstAttribute="top" secondItem="MLh-Ye-1iv" secondAttribute="bottom" constant="14" id="Wzd-Q6-n7E"/>
-                            <constraint firstItem="MLh-Ye-1iv" firstAttribute="top" secondItem="MVO-6r-znJ" secondAttribute="bottom" constant="24" id="aKv-nE-GoX"/>
-                            <constraint firstItem="MLh-Ye-1iv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aLs-Nl-GCh"/>
-                            <constraint firstItem="MVO-6r-znJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="dhW-At-8bw"/>
-                            <constraint firstItem="5uW-46-NES" firstAttribute="centerX" secondItem="OTz-xy-kuu" secondAttribute="centerX" id="ezA-go-GFl"/>
-                            <constraint firstItem="MVO-6r-znJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="f3l-bw-7CX"/>
-                            <constraint firstAttribute="bottom" secondItem="5uW-46-NES" secondAttribute="bottom" constant="20" symbolic="YES" id="gTF-Xv-429"/>
-                            <constraint firstItem="OTz-xy-kuu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w28-VQ-YVX"/>
+                            <constraint firstAttribute="bottom" secondItem="5uW-46-NES" secondAttribute="bottom" constant="20" symbolic="YES" id="9Os-Iu-wLo"/>
+                            <constraint firstItem="MVO-6r-znJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TRt-OY-Rbo"/>
+                            <constraint firstItem="5uW-46-NES" firstAttribute="top" secondItem="MLh-Ye-1iv" secondAttribute="bottom" constant="71" id="lFZ-5m-1ux"/>
+                            <constraint firstItem="5uW-46-NES" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nQ4-SA-i7W"/>
+                            <constraint firstItem="MLh-Ye-1iv" firstAttribute="top" secondItem="MVO-6r-znJ" secondAttribute="bottom" constant="24" id="qRJ-IQ-MBO"/>
+                            <constraint firstItem="5uW-46-NES" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="toh-kX-rAG"/>
+                            <constraint firstItem="MVO-6r-znJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="xEf-Kv-uG2"/>
+                            <constraint firstItem="MLh-Ye-1iv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xQL-IA-WOH"/>
                         </constraints>
+                        <connections>
+                            <action selector="backgroundTap:" destination="BYZ-38-t0r" eventType="touchDown" id="lRu-lw-hZK"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="isbn" destination="MLh-Ye-1iv" id="VMe-Ok-FfK"/>
+                        <outlet property="respuestaTextView" destination="5uW-46-NES" id="YaQ-aB-eu0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
