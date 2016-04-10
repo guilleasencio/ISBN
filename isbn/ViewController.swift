@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var portada: UIImageView!
     let urlBase = "https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN"
     
     @IBOutlet weak var respuestaTextView: UITextView!
@@ -31,7 +32,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func textFieldDidEndEditing(textField: UITextField) {
         let url = NSURL(string: String("\(urlBase):\(isbn.text!)"))
-
+        
+        
         
         let sesion = NSURLSession.sharedSession()
         
@@ -41,10 +43,53 @@ class ViewController: UIViewController, UITextFieldDelegate {
             dispatch_async(dispatch_get_main_queue()) {
                 if (error?.code) == nil{
                     if let respuestaHTTP = resp as? NSHTTPURLResponse {
+                        self.portada.hidden = true
+
                         switch respuestaHTTP.statusCode {
                         case 200..<400:
-                            let texto = NSString(data: datos!, encoding: NSUTF8StringEncoding)
-                            self.respuestaTextView.text = String(texto!)
+                            
+                            var informacion: String = ""
+                            do{
+                                let json = try NSJSONSerialization.JSONObjectWithData(datos!, options: NSJSONReadingOptions.MutableLeaves)
+                                let dico1 = json as! NSDictionary
+                                if let dico2 = dico1["ISBN:\(self.isbn.text!)"] as? NSDictionary{
+                                    
+                                    let titulo = dico2["title"] as! NSString as String
+                                    informacion = "Título: \n\n\(titulo)\n\n"
+                                    
+                                    if let dico3 = dico2["authors"] as? [NSDictionary] {
+                                        var autores: String = ""
+                                        for autor in dico3{
+                                            autores += "\(autor["name"] as! NSString as String)\n"
+                                        }
+                                        informacion += "Autor(es):\n\n\(autores)"
+                                    }
+                                    
+                                    //Comprobar si hay portada
+                                    
+                                    if let dico4 = dico2["cover"] as? NSDictionary{
+                                        
+                                        let urlImagen = NSURL(string: dico4["medium"] as! NSString as String)
+                                        if let imagen = NSData(contentsOfURL: urlImagen!) {
+                                            self.portada.image = UIImage(data: imagen)
+                                        }
+                                        self.portada.hidden = false
+                                    }
+
+                                    
+                                }else{
+                                    informacion = "ISBN no encontrado"
+                                }
+                                
+                                
+                                self.respuestaTextView.text = informacion
+                                
+                                
+                            }catch _ {
+                                print("Error al acceder a los datos")
+                            }
+
+                            
                         break
 
                         default:
